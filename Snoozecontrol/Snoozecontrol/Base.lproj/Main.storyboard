@@ -93,6 +93,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="alarmTimeButton" destination="Qwi-OP-cG0" id="ij6-YY-40Z"/>
                         <outlet property="countSlider" destination="3zc-EP-Quu" id="obY-74-sLA"/>
                         <outlet property="fromNowText" destination="H1l-m6-IdE" id="kWv-Ex-B5X"/>
                         <outlet property="lengthSlider" destination="Ryq-3z-1Tn" id="y3L-Hx-K1u"/>
@@ -114,11 +115,11 @@
                         <viewControllerLayoutGuide type="bottom" id="KQ7-Ns-vWJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EcG-nG-4sK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-oU-exc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="162"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="432765217.24695998">
                                     <!--2014-09-18 20:33:37 +0000-->
                                 </date>
@@ -130,7 +131,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <size key="freeformSize" width="320" height="600"/>
                     <connections>
                         <outlet property="datePicker" destination="pPs-oU-exc" id="CBf-mL-jwd"/>
                     </connections>

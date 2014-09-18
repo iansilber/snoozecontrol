@@ -13,8 +13,9 @@
 
 @interface TimeSelectViewController : UIViewController
 
-@property (nonatomic, copy) NSDate *date;
 @property (nonatomic, assign) id<TimeSelectViewControllerDelegate> delegate;
+
+- (void)setDate:(NSDate *)date;
 
 @end
 

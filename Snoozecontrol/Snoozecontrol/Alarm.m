@@ -17,6 +17,15 @@
 #define kSnoozeCountKey  @"Count"
 #define kSnoozeLengthKey @"Length"
 
+
+- (NSString *)firstRingTimeString {
+    return @"";
+}
+
+- (NSString *)hoursFromNowTimeString {
+    return @"";
+}
+
 - (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled {
     
     if (self = [super init]) {

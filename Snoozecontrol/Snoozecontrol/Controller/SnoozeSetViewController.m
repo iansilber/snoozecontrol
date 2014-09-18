@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *countSlider;
 @property (weak, nonatomic) IBOutlet UISlider *lengthSlider;
 
+@property (weak, nonatomic) IBOutlet UIButton *alarmTimeButton;
 @property (weak, nonatomic) IBOutlet UILabel *fromNowText;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeCountMinLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeCountMaxLabel;
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeLengthMaxLabel;
 
 @property (nonatomic, strong) Alarm *alarm;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL showingTimeSelect;
 @property (nonatomic, strong) TimeSelectViewController *timeSelectController;
 
@@ -38,6 +40,7 @@
 
 - (void)timeChanged:(NSDate *)date {
     self.alarm.date = date;
+    [self updateUIForAlarm];
 }
 
 
@@ -62,7 +65,7 @@
         }
         self.showingTimeSelect = YES;
 
-        self.timeSelectController.date = self.alarm.date;
+        [self.timeSelectController setDate:self.alarm.date];
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.timeSelectController.view.alpha = 1;
@@ -80,8 +83,22 @@
     }
 }
 
+- (void)updateUIForAlarm {
+    
+    
+    [self.alarmTimeButton setTitle:[self.dateFormatter stringFromDate:self.alarm.date] forState:UIControlStateNormal];
+
+    
+}
+
 - (IBAction)sliderChanged:(UISlider *)sender {
     
+    if(sender == self.countSlider) {
+        self.alarm.snoozeCount = sender.value;
+    } else if (sender == self.lengthSlider) {
+        self.alarm.snoozeLength = sender.value;
+    }
+    [self updateUIForAlarm];
 }
 
 - (IBAction)timeTapped:(UIButton *)sender {
@@ -92,13 +109,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[AlarmManager sharedManager] fetchAlarm];
-    // Do any additional setup after loading the view.
+    self.alarm = [[AlarmManager sharedManager] fetchAlarm];
+    self.dateFormatter = [NSDateFormatter new];
+    [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateUIForAlarm];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
