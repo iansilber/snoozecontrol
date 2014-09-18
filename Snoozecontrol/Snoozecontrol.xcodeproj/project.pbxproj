@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		F999074619CA841900746639 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074519CA841900746639 /* main.m */; };
 		F999074919CA841900746639 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074819CA841900746639 /* AppDelegate.m */; };
-		F999074C19CA841900746639 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074B19CA841900746639 /* ViewController.m */; };
 		F999074F19CA841900746639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F999074D19CA841900746639 /* Main.storyboard */; };
 		F999075119CA841900746639 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F999075019CA841900746639 /* Images.xcassets */; };
 		F999075D19CA841900746639 /* SnoozecontrolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F999075C19CA841900746639 /* SnoozecontrolTests.m */; };
+		F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076A19CA8F8600746639 /* SnoozeSetViewController.m */; };
+		F999076E19CA919C00746639 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076D19CA919C00746639 /* Alarm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +32,15 @@
 		F999074519CA841900746639 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F999074719CA841900746639 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F999074819CA841900746639 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F999074A19CA841900746639 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F999074B19CA841900746639 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F999074E19CA841900746639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F999075019CA841900746639 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F999075619CA841900746639 /* SnoozecontrolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnoozecontrolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F999075B19CA841900746639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F999075C19CA841900746639 /* SnoozecontrolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnoozecontrolTests.m; sourceTree = "<group>"; };
+		F999076919CA8F8600746639 /* SnoozeSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnoozeSetViewController.h; path = Controller/SnoozeSetViewController.h; sourceTree = "<group>"; };
+		F999076A19CA8F8600746639 /* SnoozeSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnoozeSetViewController.m; path = Controller/SnoozeSetViewController.m; sourceTree = "<group>"; };
+		F999076C19CA919C00746639 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		F999076D19CA919C00746639 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +82,11 @@
 		F999074219CA841900746639 /* Snoozecontrol */ = {
 			isa = PBXGroup;
 			children = (
+				F999076819CA8F5D00746639 /* Controller */,
+				F999076719CA8F5700746639 /* View */,
+				F999076619CA8F5100746639 /* Model */,
 				F999074719CA841900746639 /* AppDelegate.h */,
 				F999074819CA841900746639 /* AppDelegate.m */,
-				F999074A19CA841900746639 /* ViewController.h */,
-				F999074B19CA841900746639 /* ViewController.m */,
 				F999074D19CA841900746639 /* Main.storyboard */,
 				F999075019CA841900746639 /* Images.xcassets */,
 				F999074319CA841900746639 /* Supporting Files */,
@@ -114,6 +118,31 @@
 				F999075B19CA841900746639 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F999076619CA8F5100746639 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F999076C19CA919C00746639 /* Alarm.h */,
+				F999076D19CA919C00746639 /* Alarm.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F999076719CA8F5700746639 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F999076819CA8F5D00746639 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F999076919CA8F8600746639 /* SnoozeSetViewController.h */,
+				F999076A19CA8F8600746639 /* SnoozeSetViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F999074C19CA841900746639 /* ViewController.m in Sources */,
 				F999074919CA841900746639 /* AppDelegate.m in Sources */,
 				F999074619CA841900746639 /* main.m in Sources */,
+				F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */,
+				F999076E19CA919C00746639 /* Alarm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
