@@ -49,4 +49,11 @@
     return [self initWithDate:date snoozeCount:snoozeCount snoozeLength:snoozeLength enabled:enabled];
 }
 
+#pragma mark Class Methods
+
++ (id)defaultAlarm {
+    return [[Alarm alloc] initWithDate:[NSDate new] snoozeCount:3 snoozeLength:5 enabled:NO];
+}
+
+
 @end

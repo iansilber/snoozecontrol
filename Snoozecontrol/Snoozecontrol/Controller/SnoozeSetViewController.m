@@ -8,6 +8,9 @@
 
 #import "SnoozeSetViewController.h"
 
+#import "Alarm.h"
+#import "AlarmManager.h"
+
 @interface SnoozeSetViewController ()
 
 @property (weak, nonatomic) IBOutlet UISlider *countSlider;
@@ -40,6 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[AlarmManager sharedManager] fetchAlarm];
     // Do any additional setup after loading the view.
 }
 

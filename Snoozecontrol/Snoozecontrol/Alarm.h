@@ -17,4 +17,6 @@
 
 - (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;
 
++ (id)defaultAlarm;
+
 @end
