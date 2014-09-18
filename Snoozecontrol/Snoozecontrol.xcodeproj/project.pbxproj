@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F993E64319CAA41500DA9FC3 /* AlarmManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F993E64219CAA41500DA9FC3 /* AlarmManager.m */; };
+		F993E64619CB78F900DA9FC3 /* TimeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F993E64519CB78F900DA9FC3 /* TimeSelectViewController.m */; };
 		F999074619CA841900746639 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074519CA841900746639 /* main.m */; };
 		F999074919CA841900746639 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074819CA841900746639 /* AppDelegate.m */; };
 		F999074F19CA841900746639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F999074D19CA841900746639 /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		F993E64119CAA41500DA9FC3 /* AlarmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmManager.h; path = Controller/AlarmManager.h; sourceTree = "<group>"; };
 		F993E64219CAA41500DA9FC3 /* AlarmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmManager.m; path = Controller/AlarmManager.m; sourceTree = "<group>"; };
+		F993E64419CB78F900DA9FC3 /* TimeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewController.h; sourceTree = "<group>"; };
+		F993E64519CB78F900DA9FC3 /* TimeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelectViewController.m; sourceTree = "<group>"; };
 		F999074019CA841900746639 /* Snoozecontrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snoozecontrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F999074419CA841900746639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F999074519CA841900746639 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				F999076A19CA8F8600746639 /* SnoozeSetViewController.m */,
 				F993E64119CAA41500DA9FC3 /* AlarmManager.h */,
 				F993E64219CAA41500DA9FC3 /* AlarmManager.m */,
+				F993E64419CB78F900DA9FC3 /* TimeSelectViewController.h */,
+				F993E64519CB78F900DA9FC3 /* TimeSelectViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				F999074919CA841900746639 /* AppDelegate.m in Sources */,
 				F999074619CA841900746639 /* main.m in Sources */,
 				F993E64319CAA41500DA9FC3 /* AlarmManager.m in Sources */,
+				F993E64619CB78F900DA9FC3 /* TimeSelectViewController.m in Sources */,
 				F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */,
 				F999076E19CA919C00746639 /* Alarm.m in Sources */,
 			);
