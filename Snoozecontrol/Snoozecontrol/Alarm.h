@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Alarm : NSObject
+@interface Alarm : NSObject <NSCoding>
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, assign) int snoozeCount;
+@property (nonatomic, assign) int snoozeLength;
+
+- (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;
 
 @end
