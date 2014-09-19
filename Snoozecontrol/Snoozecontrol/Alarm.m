@@ -32,34 +32,63 @@
 #define kSnoozeCountKey  @"Count"
 #define kSnoozeLengthKey @"Length"
 
-- (NSDate *)dateWithAlarmComponents {
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setHour:self.hour];
-    [comps setMinute:self.minute];
-    [comps setTimeZone:[NSTimeZone localTimeZone]];
+- (NSDateComponents *)dateComponentsFromAlarm {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    return [calendar dateFromComponents:comps];
+    
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay | NSCalendarUnitSecond | NSCalendarUnitTimeZone;
+    
+    NSDateComponents *components =
+    [calendar components:unitFlags fromDate:[NSDate date]];
+    
+    [components setHour:self.hour];
+    [components setMinute:self.minute];
+    return components;
+}
+
+- (NSDate *)dateFromAlarm {
+    return [[NSCalendar currentCalendar] dateFromComponents:[self dateComponentsFromAlarm]];
 }
 
 - (NSString *)timeString {
-    return [self.dateFormatter stringFromDate:[self dateWithAlarmComponents]];
+    return [self.dateFormatter stringFromDate:[self dateFromAlarm]];
 }
 
 - (NSString *)firstAlarmTimeString {
-    return @"";
+    
+    
+    NSInteger aheadOffset = -self.snoozeCount * self.snoozeLength;
+    
+    NSDateComponents *aheadComponents = [[NSDateComponents alloc] init];
+    aheadComponents.minute = aheadOffset;
+    
+    NSDate *firstAlarmTime = [[NSCalendar currentCalendar] dateByAddingComponents:aheadComponents toDate:[self dateFromAlarm] options:0];
+    
+    return [self.dateFormatter stringFromDate:firstAlarmTime];
 }
 
 - (NSString *)hoursFromNowTimeString {
     
-//    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;
-//    NSDateComponents *components = [gregorianCalendar components:unitFlags
-//                                                        fromDate:self.date
-//                                                          toDate:[NSDate new]
-//                                                         options:0];
-//    
-//    return [NSString stringWithFormat:@"%li:%02li", components.hour, (long)components.minute];
-    return @"";
+    NSDate *now = [NSDate date];
+    
+    NSDate *alarm = [self dateFromAlarm];
+    
+    NSComparisonResult compare = [alarm compare:now];
+    
+    if (compare == NSOrderedAscending) {
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 1;
+        
+        alarm = [[NSCalendar currentCalendar] dateByAddingComponents:dayComponent toDate:alarm options:0];
+    }
+    
+    
+    NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitTimeZone;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:unitFlags
+                                                        fromDate:now
+                                                          toDate:alarm
+                                                         options:0];
+    
+    return [NSString stringWithFormat:@"%li:%02li", components.hour, components.minute];
 }
 
 - (id)initWithHour:(NSInteger)hour minute:(NSInteger)minute snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled {
@@ -100,7 +129,7 @@
 #pragma mark Class Methods
 
 + (id)defaultAlarm {
-    return [[Alarm alloc] initWithHour:8 minute:0 snoozeCount:3 snoozeLength:5 enabled:NO];
+    return [[Alarm alloc] initWithHour:8 minute:0 snoozeCount:0 snoozeLength:5 enabled:NO];
 }
 
 

@@ -70,7 +70,7 @@
         }
         self.showingTimeSelect = YES;
 
-        [self.timeSelectController setDate:[self.alarm dateWithAlarmComponents]];
+        [self.timeSelectController setDate:[self.alarm dateFromAlarm]];
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.timeSelectController.view.alpha = 1;
@@ -100,13 +100,16 @@
 
     self.fromNowText.text = hoursFromNowString;
     self.firstAlarmText.text = firstAlarmString;
+    
+    self.countSlider.value = self.alarm.snoozeCount;
+    self.lengthSlider.value = self.alarm.snoozeLength;
 }
 
 - (IBAction)sliderChanged:(UISlider *)sender {
     if(sender == self.countSlider) {
-        self.alarm.snoozeCount = sender.value;
+        self.alarm.snoozeCount = (int)floor(sender.value);
     } else if (sender == self.lengthSlider) {
-        self.alarm.snoozeLength = sender.value;
+        self.alarm.snoozeLength = (int)floor(sender.value);
     }
     [self updateUIForAlarm];
 }
