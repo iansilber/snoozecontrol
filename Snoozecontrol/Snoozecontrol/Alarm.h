@@ -10,15 +10,18 @@
 
 @interface Alarm : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign) BOOL enabled;
+@property (nonatomic) NSInteger hour;
+@property (nonatomic) NSInteger minute;
 @property (nonatomic, assign) int snoozeCount;
 @property (nonatomic, assign) int snoozeLength;
 
+- (NSDate *)dateWithAlarmComponents;
+- (NSString *)timeString;
 - (NSString *)firstAlarmTimeString;
 - (NSString *)hoursFromNowTimeString;
 
-- (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;
+- (id)initWithHour:(NSInteger)hour minute:(NSInteger)minute snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;
 
 + (id)defaultAlarm;
 

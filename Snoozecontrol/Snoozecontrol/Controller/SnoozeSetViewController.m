@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeLengthMaxLabel;
 
 @property (nonatomic, strong) Alarm *alarm;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL showingTimeSelect;
 @property (nonatomic, strong) TimeSelectViewController *timeSelectController;
 
@@ -40,10 +39,15 @@
 #pragma mark Instance Methods
 
 - (void)timeChanged:(NSDate *)date {
-    self.alarm.date = date;
+    [self updateAlarmFromDate:date];
     [self updateUIForAlarm];
 }
 
+- (void)updateAlarmFromDate:(NSDate *)date {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitTimeZone fromDate:date];
+    self.alarm.hour = components.hour;
+    self.alarm.minute = components.minute;
+}
 
 - (void)toggleTimeSelect {
     if (!self.showingTimeSelect) {
@@ -66,7 +70,7 @@
         }
         self.showingTimeSelect = YES;
 
-        [self.timeSelectController setDate:self.alarm.date];
+        [self.timeSelectController setDate:[self.alarm dateWithAlarmComponents]];
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.timeSelectController.view.alpha = 1;
@@ -86,7 +90,7 @@
 
 - (void)updateUIForAlarm {
     
-    [self.alarmTimeButton setTitle:[self.dateFormatter stringFromDate:self.alarm.date] forState:UIControlStateNormal];
+    [self.alarmTimeButton setTitle:[self.alarm timeString] forState:UIControlStateNormal];
     
     NSString *hoursFromNow = [self.alarm hoursFromNowTimeString];
     NSString *firstAlarm = [self.alarm firstAlarmTimeString];
@@ -116,9 +120,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.alarm = [[AlarmManager sharedManager] fetchAlarm];
-    self.dateFormatter = [NSDateFormatter new];
-    [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
-    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
