@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *lengthSlider;
 
 @property (weak, nonatomic) IBOutlet UIButton *alarmTimeButton;
+@property (weak, nonatomic) IBOutlet UILabel *firstAlarmText;
 @property (weak, nonatomic) IBOutlet UILabel *fromNowText;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeCountMinLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeCountMaxLabel;
@@ -85,14 +86,19 @@
 
 - (void)updateUIForAlarm {
     
-    
     [self.alarmTimeButton setTitle:[self.dateFormatter stringFromDate:self.alarm.date] forState:UIControlStateNormal];
-
     
+    NSString *hoursFromNow = [self.alarm hoursFromNowTimeString];
+    NSString *firstAlarm = [self.alarm firstAlarmTimeString];
+    
+    NSString *hoursFromNowString = [NSString stringWithFormat:@"%@ from now",hoursFromNow];
+    NSString *firstAlarmString = [NSString stringWithFormat:@"First alarm will ring at %@",firstAlarm];
+
+    self.fromNowText.text = hoursFromNowString;
+    self.firstAlarmText.text = firstAlarmString;
 }
 
 - (IBAction)sliderChanged:(UISlider *)sender {
-    
     if(sender == self.countSlider) {
         self.alarm.snoozeCount = sender.value;
     } else if (sender == self.lengthSlider) {

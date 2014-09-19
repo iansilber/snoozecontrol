@@ -15,7 +15,7 @@
 @property (nonatomic, assign) int snoozeCount;
 @property (nonatomic, assign) int snoozeLength;
 
-- (NSString *)firstRingTimeString;
+- (NSString *)firstAlarmTimeString;
 - (NSString *)hoursFromNowTimeString;
 
 - (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;

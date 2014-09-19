@@ -17,13 +17,28 @@
 #define kSnoozeCountKey  @"Count"
 #define kSnoozeLengthKey @"Length"
 
+- (NSDate *)date {
+    
+    
+    
+    return _date;
+}
 
-- (NSString *)firstRingTimeString {
+
+- (NSString *)firstAlarmTimeString {
     return @"";
 }
 
 - (NSString *)hoursFromNowTimeString {
-    return @"";
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *components = [gregorianCalendar components:unitFlags
+                                                        fromDate:self.date
+                                                          toDate:[NSDate new]
+                                                         options:0];
+    
+    return [NSString stringWithFormat:@"%li:%02li", components.hour, (long)components.minute];
 }
 
 - (id)initWithDate:(NSDate *)date snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled {
