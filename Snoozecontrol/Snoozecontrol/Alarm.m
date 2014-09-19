@@ -82,13 +82,13 @@
     }
     
     
-    NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitTimeZone;
+    NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitTimeZone;
     NSDateComponents *components = [[NSCalendar currentCalendar] components:unitFlags
                                                         fromDate:now
                                                           toDate:alarm
                                                          options:0];
     
-    return [NSString stringWithFormat:@"%li:%02li", components.hour, components.minute];
+    return [NSString stringWithFormat:@"%li:%02li", components.hour, components.minute + 1];
 }
 
 - (id)initWithHour:(NSInteger)hour minute:(NSInteger)minute snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled {
