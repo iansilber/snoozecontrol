@@ -14,23 +14,23 @@
 
 @interface SnoozeSetViewController ()<TimeSelectViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UISlider *countSlider;
-@property (weak, nonatomic) IBOutlet UISlider *lengthSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *countStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *lengthStepper;
 
 @property (weak, nonatomic) IBOutlet UIButton *alarmTimeButton;
 @property (weak, nonatomic) IBOutlet UILabel *firstAlarmText;
 @property (weak, nonatomic) IBOutlet UILabel *fromNowText;
-@property (weak, nonatomic) IBOutlet UILabel *snoozeCountMinLabel;
-@property (weak, nonatomic) IBOutlet UILabel *snoozeCountMaxLabel;
-@property (weak, nonatomic) IBOutlet UILabel *snoozeLengthMinLabel;
-@property (weak, nonatomic) IBOutlet UILabel *snoozeLengthMaxLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
+
 
 @property (nonatomic, strong) Alarm *alarm;
 @property (nonatomic, assign) BOOL showingTimeSelect;
 @property (nonatomic, strong) TimeSelectViewController *timeSelectController;
 
-- (IBAction)sliderChanged:(UISlider *)sender;
 - (IBAction)timeTapped:(UIButton *)sender;
+- (IBAction)stepperChanged:(id)sender;
 
 @end
 
@@ -101,21 +101,22 @@
     self.fromNowText.text = hoursFromNowString;
     self.firstAlarmText.text = firstAlarmString;
     
-    self.countSlider.value = self.alarm.snoozeCount;
-    self.lengthSlider.value = self.alarm.snoozeLength;
-}
-
-- (IBAction)sliderChanged:(UISlider *)sender {
-    if(sender == self.countSlider) {
-        self.alarm.snoozeCount = (int)floor(sender.value);
-    } else if (sender == self.lengthSlider) {
-        self.alarm.snoozeLength = (int)floor(sender.value);
-    }
-    [self updateUIForAlarm];
+    self.countLabel.text = [NSString stringWithFormat:@"%d", self.alarm.snoozeCount];
+    self.lengthLabel.text = [NSString stringWithFormat:@":%02d", self.alarm.snoozeLength];
+    
 }
 
 - (IBAction)timeTapped:(UIButton *)sender {
     [self toggleTimeSelect];
+}
+
+- (IBAction)stepperChanged:(UIStepper *)sender {
+    if (sender == self.countStepper) {
+        self.alarm.snoozeCount = (int)floor(sender.value);
+    } else if (sender == self.lengthStepper) {
+        self.alarm.snoozeLength = (int)floor(sender.value);
+    }
+    [self updateUIForAlarm];
 }
 
 #pragma mark UIViewController Lifecycle
@@ -127,6 +128,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.countStepper.tintColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    self.lengthStepper.tintColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     [self updateUIForAlarm];
 }
 
