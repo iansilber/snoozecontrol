@@ -49,6 +49,22 @@
     return [[NSCalendar currentCalendar] dateFromComponents:[self dateComponentsFromAlarm]];
 }
 
+- (NSDate *)nextAlarm {
+    NSDate *now = [NSDate date];
+    
+    NSDate *alarm = [self dateFromAlarm];
+    
+    NSComparisonResult compare = [alarm compare:now];
+    
+    if (compare == NSOrderedAscending) {
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 1;
+        
+        alarm = [[NSCalendar currentCalendar] dateByAddingComponents:dayComponent toDate:alarm options:0];
+    }
+    return alarm;
+}
+
 - (NSString *)timeString {
     return [self.dateFormatter stringFromDate:[self dateFromAlarm]];
 }
@@ -70,17 +86,7 @@
     
     NSDate *now = [NSDate date];
     
-    NSDate *alarm = [self dateFromAlarm];
-    
-    NSComparisonResult compare = [alarm compare:now];
-    
-    if (compare == NSOrderedAscending) {
-        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-        dayComponent.day = 1;
-        
-        alarm = [[NSCalendar currentCalendar] dateByAddingComponents:dayComponent toDate:alarm options:0];
-    }
-    
+    NSDate *alarm = [self nextAlarm];
     
     NSUInteger unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitTimeZone;
     NSDateComponents *components = [[NSCalendar currentCalendar] components:unitFlags

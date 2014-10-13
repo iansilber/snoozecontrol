@@ -19,6 +19,10 @@
 
 @implementation AlarmManager
 
+#pragma mark - Ugly overriding all setters
+
+
+
 #pragma mark - Initializers
 
 - (id)init {
@@ -48,6 +52,7 @@
         self.alarm = [Alarm defaultAlarm];
     }
     
+    
     return self.alarm;
 }
 
@@ -57,6 +62,21 @@
 
 - (void)saveState {
     [self saveAlarm:self.alarm];
+}
+
+//Hack for now to work w/ notifications
+- (void)updateAlarm {
+
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    [localNotification setFireDate:self.alarm.nextAlarm];
+    [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
+    [localNotification setAlertBody:@"Wake Up!!!!" ];
+    [localNotification setAlertAction:@"Open App"];
+    [localNotification setHasAction:YES];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 #pragma mark - Singleton Pattern

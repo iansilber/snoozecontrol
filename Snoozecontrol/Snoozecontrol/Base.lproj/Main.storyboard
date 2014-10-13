@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -351,6 +351,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVb-D6-PRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="377"/>
+        </scene>
+        <!--Alarming View Controller-->
+        <scene sceneID="CqL-9C-YUa">
+            <objects>
+                <viewController storyboardIdentifier="alarmingVC" id="daf-X2-K5p" customClass="AlarmingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7tE-IL-lGT"/>
+                        <viewControllerLayoutGuide type="bottom" id="9A8-qX-qih"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DaP-BH-rBv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm is Totally Going Off!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwd-fF-yYU">
+                                <rect key="frame" x="81" y="115" width="198" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-Cg-XVI">
+                                <rect key="frame" x="141" y="194" width="40" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeTapped:" destination="daf-X2-K5p" eventType="touchUpInside" id="x1x-17-J3d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Uwd-fF-yYU" firstAttribute="leading" secondItem="DaP-BH-rBv" secondAttribute="leading" constant="81" id="3qU-u9-DYq"/>
+                            <constraint firstItem="Uwd-fF-yYU" firstAttribute="top" secondItem="7tE-IL-lGT" secondAttribute="bottom" constant="95" id="Vue-nx-v8l"/>
+                            <constraint firstItem="9A8-qX-qih" firstAttribute="top" secondItem="Uwd-fF-yYU" secondAttribute="bottom" constant="464" id="beo-Tx-ovW"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RuH-gi-Cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="377"/>
         </scene>
     </scenes>
 </document>

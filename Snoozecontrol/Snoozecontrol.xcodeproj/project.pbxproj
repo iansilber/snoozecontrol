@@ -16,6 +16,7 @@
 		F999075D19CA841900746639 /* SnoozecontrolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F999075C19CA841900746639 /* SnoozecontrolTests.m */; };
 		F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076A19CA8F8600746639 /* SnoozeSetViewController.m */; };
 		F999076E19CA919C00746639 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076D19CA919C00746639 /* Alarm.m */; };
+		F9F0AF8B19EB70B5002B7318 /* AlarmingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F0AF8A19EB70B5002B7318 /* AlarmingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		F999076A19CA8F8600746639 /* SnoozeSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnoozeSetViewController.m; path = Controller/SnoozeSetViewController.m; sourceTree = "<group>"; };
 		F999076C19CA919C00746639 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		F999076D19CA919C00746639 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		F9F0AF8919EB70B5002B7318 /* AlarmingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmingViewController.h; path = Controller/AlarmingViewController.h; sourceTree = "<group>"; };
+		F9F0AF8A19EB70B5002B7318 /* AlarmingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmingViewController.m; path = Controller/AlarmingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				F993E64219CAA41500DA9FC3 /* AlarmManager.m */,
 				F993E64419CB78F900DA9FC3 /* TimeSelectViewController.h */,
 				F993E64519CB78F900DA9FC3 /* TimeSelectViewController.m */,
+				F9F0AF8919EB70B5002B7318 /* AlarmingViewController.h */,
+				F9F0AF8A19EB70B5002B7318 /* AlarmingViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				F999074919CA841900746639 /* AppDelegate.m in Sources */,
 				F999074619CA841900746639 /* main.m in Sources */,
 				F993E64319CAA41500DA9FC3 /* AlarmManager.m in Sources */,
+				F9F0AF8B19EB70B5002B7318 /* AlarmingViewController.m in Sources */,
 				F993E64619CB78F900DA9FC3 /* TimeSelectViewController.m in Sources */,
 				F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */,
 				F999076E19CA919C00746639 /* Alarm.m in Sources */,

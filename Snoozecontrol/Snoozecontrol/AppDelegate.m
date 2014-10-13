@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "AlarmManager.h"
+#import "SnoozeSetViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UILabel appearance] setFont:[UIFont fontWithName:@"Avenir" size:13.0]];
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    [(SnoozeSetViewController *)self.window.rootViewController startAlarming:notification];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

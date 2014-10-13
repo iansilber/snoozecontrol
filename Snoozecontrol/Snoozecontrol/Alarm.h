@@ -20,6 +20,7 @@
 - (NSString *)timeString;
 - (NSString *)firstAlarmTimeString;
 - (NSString *)hoursFromNowTimeString;
+- (NSDate *)nextAlarm;
 
 - (id)initWithHour:(NSInteger)hour minute:(NSInteger)minute snoozeCount:(int)count snoozeLength:(int)length enabled:(BOOL)enabled;
 

@@ -10,4 +10,6 @@
 
 @interface SnoozeSetViewController : UIViewController
 
+- (void)startAlarming:(UILocalNotification *)notification;
+
 @end

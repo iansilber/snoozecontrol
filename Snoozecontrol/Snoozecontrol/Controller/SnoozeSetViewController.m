@@ -9,10 +9,11 @@
 #import "SnoozeSetViewController.h"
 
 #import "Alarm.h"
+#import "AlarmingViewController.h"
 #import "AlarmManager.h"
 #import "TimeSelectViewController.h"
 
-@interface SnoozeSetViewController ()<TimeSelectViewControllerDelegate>
+@interface SnoozeSetViewController ()<AlarmingViewControllerDelegate, TimeSelectViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIStepper *countStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *lengthStepper;
@@ -26,6 +27,7 @@
 
 
 @property (nonatomic, strong) Alarm *alarm;
+@property (nonatomic, strong) AlarmingViewController* alarmingVC;
 @property (nonatomic, assign) BOOL showingTimeSelect;
 @property (nonatomic, strong) TimeSelectViewController *timeSelectController;
 
@@ -38,15 +40,11 @@
 
 #pragma mark Instance Methods
 
-- (void)timeChanged:(NSDate *)date {
-    [self updateAlarmFromDate:date];
-    [self updateUIForAlarm];
-}
-
 - (void)updateAlarmFromDate:(NSDate *)date {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitTimeZone fromDate:date];
     self.alarm.hour = components.hour;
     self.alarm.minute = components.minute;
+    [[AlarmManager sharedManager] updateAlarm];
 }
 
 - (void)toggleTimeSelect {
@@ -116,6 +114,32 @@
     } else if (sender == self.lengthStepper) {
         self.alarm.snoozeLength = (int)floor(sender.value);
     }
+    [[AlarmManager sharedManager] updateAlarm];
+    [self updateUIForAlarm];
+}
+
+- (void)startAlarming:(UILocalNotification *)notification {
+    if (!self.alarmingVC) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.alarmingVC  = [storyboard instantiateViewControllerWithIdentifier:@"alarmingVC"];
+        self.alarmingVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        self.alarmingVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        self.alarmingVC.delegate = self;
+    }
+    [self presentViewController:self.alarmingVC animated:YES completion:nil];
+}
+
+#pragma mark AlarmingViewControllerDelegate
+
+- (void)closeClicked:(AlarmingViewController *)viewcontroller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark TimeSelectViewControllerDelegate
+
+
+- (void)timeChanged:(NSDate *)date {
+    [self updateAlarmFromDate:date];
     [self updateUIForAlarm];
 }
 
