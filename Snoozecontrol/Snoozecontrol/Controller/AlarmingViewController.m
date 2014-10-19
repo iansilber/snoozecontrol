@@ -12,7 +12,8 @@
 
 @interface AlarmingViewController ()
 
-@property (assign) SystemSoundID foghornSound;
+@property (strong, nonatomic) AVAudioSession *audioSession;
+@property (strong, nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @property (nonatomic, strong) NSTimer *ringTimer;
 @property (nonatomic, assign) int ringCount;
 
@@ -43,11 +44,7 @@
 }
 
 - (void)makeNoise {
-    NSString *fogPath = [[NSBundle mainBundle]
-                            pathForResource:@"foghorn" ofType:@"wav"];
-    NSURL *foghornURL = [NSURL fileURLWithPath:fogPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)foghornURL, &_foghornSound);
-    
+    [self.backgroundMusicPlayer play];
     self.ringCount--;
     
     if (self.ringCount == 0) {
@@ -56,8 +53,39 @@
     }
 }
 
+- (void) configureAudioSession {
+    // Implicit initialization of audio session
+    self.audioSession = [AVAudioSession sharedInstance];
+    
+    // Set category of audio session
+    // See handy chart on pg. 46 of the Audio Session Programming Guide for what the categories mean
+    // Not absolutely required in this example, but good to get into the habit of doing
+    // See pg. 10 of Audio Session Programming Guide for "Why a Default Session Usually Isn't What You Want"
+    
+    NSError *setCategoryError = nil;
+    if ([self.audioSession isOtherAudioPlaying]) { // mix sound effects with music already playing
+        [self.audioSession setCategory:AVAudioSessionCategorySoloAmbient error:&setCategoryError];
+    } else {
+        [self.audioSession setCategory:AVAudioSessionCategoryAmbient error:&setCategoryError];
+    }
+    if (setCategoryError) {
+        NSLog(@"Error setting category! %ld", (long)[setCategoryError code]);
+    }
+}
+
+- (void)configureAudioPlayer {
+    // Create audio player with background music
+    NSString *backgroundMusicPath = [[NSBundle mainBundle] pathForResource:@"foghorn" ofType:@"wav"];
+    NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:nil];
+    self.backgroundMusicPlayer.numberOfLoops = 0;	// Negative number means loop forever
+    [self.backgroundMusicPlayer prepareToPlay];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureAudioSession];
+    [self configureAudioPlayer];
     // Do any additional setup after loading the view.
 }
 
