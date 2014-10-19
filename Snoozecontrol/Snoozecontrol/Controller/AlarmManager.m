@@ -80,7 +80,7 @@
             dayComponent.minute = -i * self.alarm.snoozeLength;
             NSDate *alarmTime = [[NSCalendar currentCalendar] dateByAddingComponents:dayComponent toDate:finalAlarmTime options:0];
             
-            NSComparisonResult compare = [alarmTime compare:now];
+            NSComparisonResult compare = [now compare:alarmTime];
             if (compare == NSOrderedAscending) {
                 UILocalNotification *localNotification = [[UILocalNotification alloc] init];
                 

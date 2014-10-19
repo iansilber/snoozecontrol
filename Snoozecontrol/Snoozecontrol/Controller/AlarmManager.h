@@ -21,5 +21,4 @@
 //Hack for now to work w/ notifications
 - (void)updateAlarm;
 
-- (void)stopAllAlarms;
 @end

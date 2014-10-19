@@ -368,13 +368,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Alarm is Totally Going Off!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwd-fF-yYU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm is Totally Going Off!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwd-fF-yYU">
                                 <rect key="frame" x="27" y="115" width="198" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-Cg-XVI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-Cg-XVI">
                                 <rect key="frame" x="56" y="184" width="114" height="30"/>
                                 <state key="normal" title="Shutup this Ring">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -383,7 +383,7 @@
                                     <action selector="shutupThisRing:" destination="daf-X2-K5p" eventType="touchUpInside" id="X5N-nM-PfW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-E9-3f1">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-E9-3f1">
                                 <rect key="frame" x="56" y="228" width="170" height="30"/>
                                 <state key="normal" title="Totally Shutup this Alarm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,9 +397,12 @@
                         <constraints>
                             <constraint firstItem="DS8-Cg-XVI" firstAttribute="leading" secondItem="DaP-BH-rBv" secondAttribute="leading" constant="56" id="3Ms-Nn-BGL"/>
                             <constraint firstItem="Uwd-fF-yYU" firstAttribute="leading" secondItem="DaP-BH-rBv" secondAttribute="leading" constant="81" id="3qU-u9-DYq"/>
+                            <constraint firstItem="Uwd-fF-yYU" firstAttribute="top" secondItem="DaP-BH-rBv" secondAttribute="top" constant="115" id="5ZO-h4-zsA"/>
                             <constraint firstItem="Uwd-fF-yYU" firstAttribute="leading" secondItem="DaP-BH-rBv" secondAttribute="leading" constant="27" id="5jx-aN-iCB"/>
                             <constraint firstItem="Uwd-fF-yYU" firstAttribute="top" secondItem="7tE-IL-lGT" secondAttribute="bottom" constant="95" id="Vue-nx-v8l"/>
                             <constraint firstItem="9A8-qX-qih" firstAttribute="top" secondItem="Uwd-fF-yYU" secondAttribute="bottom" constant="464" id="beo-Tx-ovW"/>
+                            <constraint firstItem="DS8-Cg-XVI" firstAttribute="top" secondItem="DaP-BH-rBv" secondAttribute="top" constant="184" id="wrJ-Ns-krZ"/>
+                            <constraint firstItem="Xdo-E9-3f1" firstAttribute="top" secondItem="DaP-BH-rBv" secondAttribute="top" constant="228" id="zhf-N5-vZV"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
