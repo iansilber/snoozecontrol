@@ -70,14 +70,55 @@
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     if (self.alarm.enabled) {
-        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         
-        [localNotification setFireDate:self.alarm.nextAlarm];
-        [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
-        [localNotification setAlertBody:@"Wake Up!!!!" ];
-        [localNotification setAlertAction:@"Open App"];
-        [localNotification setHasAction:YES];
-        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        NSDate *finalAlarmTime = self.alarm.nextAlarm;
+        NSDate *now = [NSDate date];
+        
+        
+        for (int i = 0; i<= self.alarm.snoozeCount; i++) {
+            NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+            dayComponent.minute = -i * self.alarm.snoozeLength;
+            NSDate *alarmTime = [[NSCalendar currentCalendar] dateByAddingComponents:dayComponent toDate:finalAlarmTime options:0];
+            
+            NSComparisonResult compare = [alarmTime compare:now];
+            if (compare == NSOrderedAscending) {
+                UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                
+                int ringCount;
+                NSString *notificationBody;
+                
+                if (i == 0) {
+                    ringCount = -1;
+                    notificationBody = @"Time to wake up!";
+                } else {
+                    ringCount = self.alarm.snoozeCount + 1 - i;
+                    
+                    if (i == 1) {
+                        notificationBody = @"Oh man, you only have 1 snooze left!";
+                    } else {
+                        notificationBody = [NSString stringWithFormat:@"Nudge nuge, you've got %i snoozes left.", i];
+                    }
+                }
+                
+                NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: ringCount], @"ringCount", nil];
+                
+                [localNotification setFireDate:alarmTime];
+                [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
+                [localNotification setAlertBody: notificationBody];
+                [localNotification setAlertAction:@"Open App"];
+                [localNotification setHasAction:YES];
+                [localNotification setUserInfo:info];
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                NSLog(@"Scheduled Alarm for %@ with %i rings",alarmTime, ringCount);
+            } else {
+                break;
+            }
+            
+        }
+        
+        
+        
+        
     }
 }
 

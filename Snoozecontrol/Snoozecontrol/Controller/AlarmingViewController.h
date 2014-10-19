@@ -12,10 +12,11 @@
 
 @interface AlarmingViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *alarmInfo;
 @property (nonatomic, assign) id<AlarmingViewControllerDelegate> delegate;
 
 @end
 
 @protocol AlarmingViewControllerDelegate <NSObject>
-- (void)closeClicked:(AlarmingViewController *)viewcontroller;
+- (void)totallyShutUpClicked:(AlarmingViewController *)viewcontroller;
 @end

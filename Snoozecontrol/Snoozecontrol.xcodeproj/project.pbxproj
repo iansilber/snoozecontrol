@@ -17,6 +17,8 @@
 		F999076B19CA8F8600746639 /* SnoozeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076A19CA8F8600746639 /* SnoozeSetViewController.m */; };
 		F999076E19CA919C00746639 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = F999076D19CA919C00746639 /* Alarm.m */; };
 		F9F0AF8B19EB70B5002B7318 /* AlarmingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F0AF8A19EB70B5002B7318 /* AlarmingViewController.m */; };
+		F9F0AF8D19F3682A002B7318 /* foghorn.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9F0AF8C19F3682A002B7318 /* foghorn.wav */; };
+		F9F0AF8F19F37258002B7318 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F0AF8E19F37258002B7318 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		F999076D19CA919C00746639 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		F9F0AF8919EB70B5002B7318 /* AlarmingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmingViewController.h; path = Controller/AlarmingViewController.h; sourceTree = "<group>"; };
 		F9F0AF8A19EB70B5002B7318 /* AlarmingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmingViewController.m; path = Controller/AlarmingViewController.m; sourceTree = "<group>"; };
+		F9F0AF8C19F3682A002B7318 /* foghorn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = foghorn.wav; sourceTree = "<group>"; };
+		F9F0AF8E19F37258002B7318 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F0AF8F19F37258002B7318 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +78,7 @@
 		F999073719CA841900746639 = {
 			isa = PBXGroup;
 			children = (
+				F9F0AF8E19F37258002B7318 /* Foundation.framework */,
 				F999074219CA841900746639 /* Snoozecontrol */,
 				F999075919CA841900746639 /* SnoozecontrolTests */,
 				F999074119CA841900746639 /* Products */,
@@ -106,6 +112,7 @@
 		F999074319CA841900746639 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9F0AF8C19F3682A002B7318 /* foghorn.wav */,
 				F999074419CA841900746639 /* Info.plist */,
 				F999074519CA841900746639 /* main.m */,
 			);
@@ -241,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F999074F19CA841900746639 /* Main.storyboard in Resources */,
+				F9F0AF8D19F3682A002B7318 /* foghorn.wav in Resources */,
 				F999075119CA841900746639 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
