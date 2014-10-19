@@ -135,7 +135,7 @@
 #pragma mark Class Methods
 
 + (id)defaultAlarm {
-    return [[Alarm alloc] initWithHour:8 minute:0 snoozeCount:0 snoozeLength:5 enabled:NO];
+    return [[Alarm alloc] initWithHour:8 minute:0 snoozeCount:0 snoozeLength:5 enabled:YES];
 }
 
 

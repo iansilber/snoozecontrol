@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *alarmTimeButton;
 @property (weak, nonatomic) IBOutlet UILabel *firstAlarmText;
 @property (weak, nonatomic) IBOutlet UILabel *fromNowText;
+@property (weak, nonatomic) IBOutlet UISwitch *onOffSwitch;
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
@@ -31,6 +32,7 @@
 @property (nonatomic, assign) BOOL showingTimeSelect;
 @property (nonatomic, strong) TimeSelectViewController *timeSelectController;
 
+- (IBAction)onOffSwitched:(UISwitch *)sender;
 - (IBAction)timeTapped:(UIButton *)sender;
 - (IBAction)stepperChanged:(id)sender;
 
@@ -101,7 +103,13 @@
     
     self.countLabel.text = [NSString stringWithFormat:@"%d", self.alarm.snoozeCount];
     self.lengthLabel.text = [NSString stringWithFormat:@":%02d", self.alarm.snoozeLength];
-    
+
+    self.onOffSwitch.on = self.alarm.enabled;
+}
+
+- (IBAction)onOffSwitched:(UISwitch *)sender {
+    self.alarm.enabled = sender.on;
+    [[AlarmManager sharedManager] updateAlarm];
 }
 
 - (IBAction)timeTapped:(UIButton *)sender {
@@ -155,6 +163,7 @@
     self.countStepper.tintColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     self.lengthStepper.tintColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     [self updateUIForAlarm];
+    [[AlarmManager sharedManager] updateAlarm];
 }
 
 - (void)didReceiveMemoryWarning {

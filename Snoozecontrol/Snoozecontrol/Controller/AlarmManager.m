@@ -66,17 +66,19 @@
 
 //Hack for now to work w/ notifications
 - (void)updateAlarm {
-
+    
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    
-    [localNotification setFireDate:self.alarm.nextAlarm];
-    [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
-    [localNotification setAlertBody:@"Wake Up!!!!" ];
-    [localNotification setAlertAction:@"Open App"];
-    [localNotification setHasAction:YES];
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    if (self.alarm.enabled) {
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        
+        [localNotification setFireDate:self.alarm.nextAlarm];
+        [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
+        [localNotification setAlertBody:@"Wake Up!!!!" ];
+        [localNotification setAlertAction:@"Open App"];
+        [localNotification setHasAction:YES];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
 }
 
 #pragma mark - Singleton Pattern

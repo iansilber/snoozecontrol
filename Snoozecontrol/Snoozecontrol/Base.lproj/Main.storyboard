@@ -104,6 +104,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-CW-gDR">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="onOffSwitched:" destination="vXZ-lx-hvc" eventType="valueChanged" id="vLf-nM-cRt"/>
+                                        </connections>
                                     </switch>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minimumValue="5" maximumValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zUQ-9h-dig" userLabel="Length Stepper">
                                         <rect key="frame" x="-47" y="-14" width="94" height="29"/>
@@ -312,6 +315,7 @@
                         <outlet property="fromNowText" destination="H1l-m6-IdE" id="kWv-Ex-B5X"/>
                         <outlet property="lengthLabel" destination="H5o-xN-X6V" id="zI7-b2-yof"/>
                         <outlet property="lengthStepper" destination="zUQ-9h-dig" id="bn4-aT-Cw1"/>
+                        <outlet property="onOffSwitch" destination="Yrs-CW-gDR" id="lfy-Pq-nIQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
