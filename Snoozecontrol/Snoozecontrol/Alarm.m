@@ -42,6 +42,7 @@
     
     [components setHour:self.hour];
     [components setMinute:self.minute];
+    [components setSecond:0];
     return components;
 }
 

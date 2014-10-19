@@ -96,7 +96,7 @@
                     if (i == 1) {
                         notificationBody = @"Oh man, you only have 1 snooze left!";
                     } else {
-                        notificationBody = [NSString stringWithFormat:@"Nudge nuge, you've got %i snoozes left.", i];
+                        notificationBody = [NSString stringWithFormat:@"Nudge nudge, you've got %i snoozes left.", i];
                     }
                 }
                 

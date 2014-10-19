@@ -45,6 +45,7 @@
 
 - (void)makeNoise {
     [self.backgroundMusicPlayer play];
+    NSLog(@"noising at ring count %i", self.ringCount);
     self.ringCount--;
     
     if (self.ringCount == 0) {
@@ -62,15 +63,9 @@
     // Not absolutely required in this example, but good to get into the habit of doing
     // See pg. 10 of Audio Session Programming Guide for "Why a Default Session Usually Isn't What You Want"
     
-    NSError *setCategoryError = nil;
-    if ([self.audioSession isOtherAudioPlaying]) { // mix sound effects with music already playing
-        [self.audioSession setCategory:AVAudioSessionCategorySoloAmbient error:&setCategoryError];
-    } else {
-        [self.audioSession setCategory:AVAudioSessionCategoryAmbient error:&setCategoryError];
-    }
-    if (setCategoryError) {
-        NSLog(@"Error setting category! %ld", (long)[setCategoryError code]);
-    }
+    NSError *error = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    [[AVAudioSession sharedInstance] setActive:YES error:&error];
 }
 
 - (void)configureAudioPlayer {
