@@ -62,7 +62,10 @@
             int height = self.view.bounds.size.height;
             self.timeSelectController.view.alpha = 0;
             
-            CGRect frame = CGRectMake(0, height - (height/4), width, height/4);
+            NSLog(@"%d", width);
+            NSLog(@"%d", height);
+            
+            CGRect frame = CGRectMake(0, height - (height/2), width, height/2);
             [self.timeSelectController willMoveToParentViewController:self];
             [self.timeSelectController.view setFrame:frame];
             [self.view addSubview:self.timeSelectController.view];

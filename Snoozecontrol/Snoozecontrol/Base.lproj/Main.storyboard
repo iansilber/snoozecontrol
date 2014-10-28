@@ -330,11 +330,11 @@
                         <viewControllerLayoutGuide type="top" id="uCK-vz-sla"/>
                         <viewControllerLayoutGuide type="bottom" id="KQ7-Ns-vWJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EcG-nG-4sK">
+                    <view key="view" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="400" id="EcG-nG-4sK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-oU-exc">
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-oU-exc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="432765217.24695998">
                                     <!--2014-09-18 20:33:37 +0000-->
@@ -343,9 +343,51 @@
                                     <action selector="dateChanged:" destination="R7w-ST-dSb" eventType="valueChanged" id="loh-tU-Xw0"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2n-Uh-YIj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z2n-Uh-YIj" firstAttribute="top" secondItem="uCK-vz-sla" secondAttribute="bottom" constant="8" id="OWE-UG-r9a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z2n-Uh-YIj" secondAttribute="trailing" constant="8" id="ZTV-Dh-T6L">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="pPs-oU-exc" secondAttribute="trailing" constant="-16" id="ZiG-cH-VCM"/>
+                            <constraint firstItem="pPs-oU-exc" firstAttribute="top" secondItem="EcG-nG-4sK" secondAttribute="topMargin" id="g4x-zM-ScA">
+                                <variation key="widthClass=compact" constant="44"/>
+                            </constraint>
+                            <constraint firstItem="pPs-oU-exc" firstAttribute="leading" secondItem="EcG-nG-4sK" secondAttribute="leadingMargin" constant="-16" id="khZ-e7-SF1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Z2n-Uh-YIj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="OWE-UG-r9a"/>
+                                <exclude reference="ZTV-Dh-T6L"/>
+                                <exclude reference="ZiG-cH-VCM"/>
+                                <exclude reference="g4x-zM-ScA"/>
+                                <exclude reference="khZ-e7-SF1"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Z2n-Uh-YIj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="OWE-UG-r9a"/>
+                                <include reference="ZTV-Dh-T6L"/>
+                                <include reference="ZiG-cH-VCM"/>
+                                <include reference="g4x-zM-ScA"/>
+                                <include reference="khZ-e7-SF1"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="600"/>
                     <connections>
