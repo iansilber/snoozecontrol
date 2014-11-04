@@ -67,6 +67,7 @@
 }
 
 - (void)alarmFired:(NSTimer *)timer {
+    NSLog(@"alarm fired from Manager");
     if ([self.alarmTimers containsObject:timer]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"sctime" object:nil userInfo:timer.userInfo];
     }

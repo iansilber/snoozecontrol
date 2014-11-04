@@ -25,12 +25,15 @@
 @implementation AlarmingViewController
 
 - (void)setAlarmInfo:(NSDictionary *)alarmInfo {
+    NSLog(@"setting alarm info");
+
     _alarmInfo = alarmInfo;
 
     [self.ringTimer invalidate];
     self.ringTimer = nil;
     self.ringCount = [(NSNumber *)[alarmInfo objectForKey:@"ringCount"] intValue];
-    self.ringTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(makeNoise) userInfo:nil repeats:YES];
+    [self.backgroundMusicPlayer prepareToPlay];
+    self.ringTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(makeNoise) userInfo:nil repeats:YES];
 }
 
 - (IBAction)shutupThisRing:(UIButton *)sender {
@@ -44,6 +47,8 @@
 }
 
 - (void)makeNoise {
+    NSLog(@"trying to make noise");
+
     [self.backgroundMusicPlayer play];
     NSLog(@"noising at ring count %i", self.ringCount);
     self.ringCount--;
@@ -51,6 +56,8 @@
     if (self.ringCount == 0) {
         [self.ringTimer invalidate];
         self.ringTimer = nil;
+    } else {
+        [self.backgroundMusicPlayer prepareToPlay];
     }
 }
 
@@ -61,7 +68,6 @@
     NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:nil];
     self.backgroundMusicPlayer.numberOfLoops = 0;	// Negative number means loop forever
-    [self.backgroundMusicPlayer prepareToPlay];
 }
 
 - (void)viewDidLoad {

@@ -132,6 +132,8 @@
 }
 
 - (void)startAlarming:(NSNotification *)notification {
+    NSLog(@"snooze set start Alarming");
+
     if (!self.alarmingVC) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.alarmingVC  = [storyboard instantiateViewControllerWithIdentifier:@"alarmingVC"];
