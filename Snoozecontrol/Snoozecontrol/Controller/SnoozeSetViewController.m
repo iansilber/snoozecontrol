@@ -137,8 +137,10 @@
         self.alarmingVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         self.alarmingVC.delegate = self;
     }
-    [self presentViewController:self.alarmingVC animated:YES completion:nil];
     self.alarmingVC.alarmInfo = notification.userInfo;
+    if (!self.alarmingVC.presentingViewController) {
+        [self presentViewController:self.alarmingVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark AlarmingViewControllerDelegate
