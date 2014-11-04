@@ -106,6 +106,8 @@
     
     self.countLabel.text = [NSString stringWithFormat:@"%d", self.alarm.snoozeCount];
     self.lengthLabel.text = [NSString stringWithFormat:@":%02d", self.alarm.snoozeLength];
+    self.countStepper.value = self.alarm.snoozeCount;
+    self.lengthStepper.value = self.alarm.snoozeLength;
 
     self.onOffSwitch.on = self.alarm.enabled;
 }
@@ -121,15 +123,15 @@
 
 - (IBAction)stepperChanged:(UIStepper *)sender {
     if (sender == self.countStepper) {
-        self.alarm.snoozeCount = (int)floor(sender.value);
+        self.alarm.snoozeCount = (int)sender.value;
     } else if (sender == self.lengthStepper) {
-        self.alarm.snoozeLength = (int)floor(sender.value);
+        self.alarm.snoozeLength = (int)sender.value;
     }
     [[AlarmManager sharedManager] updateAlarm];
     [self updateUIForAlarm];
 }
 
-- (void)startAlarming:(UILocalNotification *)notification {
+- (void)startAlarming:(NSNotification *)notification {
     if (!self.alarmingVC) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.alarmingVC  = [storyboard instantiateViewControllerWithIdentifier:@"alarmingVC"];
@@ -164,6 +166,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.alarm = [[AlarmManager sharedManager] fetchAlarm];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startAlarming:) name:@"sctime" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

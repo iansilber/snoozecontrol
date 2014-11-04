@@ -1,3 +1,4 @@
+
 //
 //  AlarmManager.m
 //  Snoozecontrol
@@ -14,6 +15,7 @@
 @interface AlarmManager()
 
 @property (nonatomic, strong) Alarm *alarm;
+@property (nonatomic, strong) NSMutableArray *alarmTimers;
 
 @end
 
@@ -64,10 +66,28 @@
     [self saveAlarm:self.alarm];
 }
 
+- (void)alarmFired:(NSTimer *)timer {
+    if ([self.alarmTimers containsObject:timer]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"sctime" object:nil userInfo:timer.userInfo];
+    }
+    [timer invalidate];
+    [self.alarmTimers removeObject:timer];
+}
+
+- (void)disableAlarm {
+    self.alarm.enabled = NO;
+    [self updateAlarm];
+}
+
 //Hack for now to work w/ notifications
 - (void)updateAlarm {
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    for (NSTimer *timer in self.alarmTimers) {
+        [timer invalidate];
+    }
+    [self.alarmTimers removeAllObjects];
+    self.alarmTimers = [NSMutableArray new];
     
     if (self.alarm.enabled) {
         
@@ -109,6 +129,12 @@
                 [localNotification setHasAction:YES];
                 [localNotification setUserInfo:info];
                 [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                
+                NSTimer *timer = [[NSTimer alloc] initWithFireDate:alarmTime interval:0 target:self selector:@selector(alarmFired:) userInfo:info repeats:NO];
+                
+                [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+                [self.alarmTimers addObject:timer];
+                
                 NSLog(@"Scheduled Alarm for %@ with %i rings",alarmTime, ringCount);
             } else {
                 break;

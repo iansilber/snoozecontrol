@@ -27,9 +27,10 @@
 
 - (void)setAlarmInfo:(NSDictionary *)alarmInfo {
     _alarmInfo = alarmInfo;
-    
+
+    [self.ringTimer invalidate];
+    self.ringTimer = nil;
     self.ringCount = [(NSNumber *)[alarmInfo objectForKey:@"ringCount"] intValue];
-    
     self.ringTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(makeNoise) userInfo:nil repeats:YES];
 }
 
