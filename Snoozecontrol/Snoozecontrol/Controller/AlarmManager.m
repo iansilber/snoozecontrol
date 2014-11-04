@@ -146,6 +146,7 @@
         
         
     }
+    [self saveState];
 }
 
 #pragma mark - Singleton Pattern
