@@ -109,7 +109,7 @@
                                             <action selector="onOffSwitched:" destination="vXZ-lx-hvc" eventType="valueChanged" id="vLf-nM-cRt"/>
                                         </connections>
                                     </switch>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minimumValue="5" maximumValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zUQ-9h-dig" userLabel="Length Stepper">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minimumValue="1" maximumValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zUQ-9h-dig" userLabel="Length Stepper">
                                         <rect key="frame" x="-47" y="-14" width="94" height="29"/>
                                         <connections>
                                             <action selector="stepperChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="26h-Vd-Ca3"/>

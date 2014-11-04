@@ -12,7 +12,6 @@
 
 @interface AlarmingViewController ()
 
-@property (strong, nonatomic) AVAudioSession *audioSession;
 @property (strong, nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @property (nonatomic, strong) NSTimer *ringTimer;
 @property (nonatomic, assign) int ringCount;
@@ -55,19 +54,6 @@
     }
 }
 
-- (void) configureAudioSession {
-    // Implicit initialization of audio session
-    self.audioSession = [AVAudioSession sharedInstance];
-    
-    // Set category of audio session
-    // See handy chart on pg. 46 of the Audio Session Programming Guide for what the categories mean
-    // Not absolutely required in this example, but good to get into the habit of doing
-    // See pg. 10 of Audio Session Programming Guide for "Why a Default Session Usually Isn't What You Want"
-    
-    NSError *error = nil;
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    [[AVAudioSession sharedInstance] setActive:YES error:&error];
-}
 
 - (void)configureAudioPlayer {
     // Create audio player with background music
@@ -80,7 +66,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configureAudioSession];
     [self configureAudioPlayer];
     // Do any additional setup after loading the view.
 }
