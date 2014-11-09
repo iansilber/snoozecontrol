@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D25FFF621A100A3500724D75 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25FFF611A100A3500724D75 /* Launch Screen.xib */; };
 		F993E64319CAA41500DA9FC3 /* AlarmManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F993E64219CAA41500DA9FC3 /* AlarmManager.m */; };
 		F993E64619CB78F900DA9FC3 /* TimeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F993E64519CB78F900DA9FC3 /* TimeSelectViewController.m */; };
 		F999074619CA841900746639 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F999074519CA841900746639 /* main.m */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D25FFF611A100A3500724D75 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		F993E64119CAA41500DA9FC3 /* AlarmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmManager.h; path = Controller/AlarmManager.h; sourceTree = "<group>"; };
 		F993E64219CAA41500DA9FC3 /* AlarmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmManager.m; path = Controller/AlarmManager.m; sourceTree = "<group>"; };
 		F993E64419CB78F900DA9FC3 /* TimeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewController.h; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				F999074819CA841900746639 /* AppDelegate.m */,
 				F999074D19CA841900746639 /* Main.storyboard */,
 				F999075019CA841900746639 /* Images.xcassets */,
+				D25FFF611A100A3500724D75 /* Launch Screen.xib */,
 				F999074319CA841900746639 /* Supporting Files */,
 			);
 			path = Snoozecontrol;
@@ -216,10 +219,11 @@
 				TargetAttributes = {
 					F999073F19CA841900746639 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = SDL7VU3E9K;
+						DevelopmentTeam = R9K5UR82LV;
 					};
 					F999075519CA841900746639 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = R9K5UR82LV;
 						TestTargetID = F999073F19CA841900746639;
 					};
 				};
@@ -249,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F999074F19CA841900746639 /* Main.storyboard in Resources */,
+				D25FFF621A100A3500724D75 /* Launch Screen.xib in Resources */,
 				F9F0AF8D19F3682A002B7318 /* foghorn.wav in Resources */,
 				F999075119CA841900746639 /* Images.xcassets in Resources */,
 			);

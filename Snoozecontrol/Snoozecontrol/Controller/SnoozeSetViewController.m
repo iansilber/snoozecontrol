@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *countTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lengthTitleLabel;
 
 @property (nonatomic, strong) Alarm *alarm;
 @property (nonatomic, strong) AlarmingViewController* alarmingVC;
@@ -110,11 +112,32 @@
     self.lengthStepper.value = self.alarm.snoozeLength;
 
     self.onOffSwitch.on = self.alarm.enabled;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        if (self.alarm.enabled) {
+            self.alarmTimeButton.alpha = 1.0;
+            self.countLabel.alpha = 1.0;
+            self.lengthLabel.alpha = 1.0;
+            self.countTitleLabel.alpha = 1.0;
+            self.lengthTitleLabel.alpha = 1.0;
+            self.firstAlarmText.alpha = 1.0;
+        } else {
+            self.alarmTimeButton.alpha = 0.3;
+            self.countLabel.alpha = 0.3;
+            self.lengthLabel.alpha = 0.3;
+            self.countTitleLabel.alpha = 0.3;
+            self.lengthTitleLabel.alpha = 0.3;
+            self.firstAlarmText.alpha = 0.3;
+            
+        }
+
+    }];
 }
 
 - (IBAction)onOffSwitched:(UISwitch *)sender {
     self.alarm.enabled = sender.on;
     [[AlarmManager sharedManager] updateAlarm];
+    [self updateUIForAlarm];
 }
 
 - (IBAction)timeTapped:(UIButton *)sender {
