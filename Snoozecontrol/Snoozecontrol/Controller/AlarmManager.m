@@ -91,7 +91,8 @@
     self.alarmTimers = [NSMutableArray new];
     
     if (self.alarm.enabled) {
-        
+        [((AppDelegate *)[UIApplication sharedApplication].delegate) startBase];
+
         NSDate *finalAlarmTime = self.alarm.nextAlarm;
         NSDate *now = [NSDate date];
         

@@ -68,6 +68,7 @@
     NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:nil];
     self.backgroundMusicPlayer.numberOfLoops = 0;	// Negative number means loop forever
+    self.backgroundMusicPlayer.volume = 1;
 }
 
 - (void)viewDidLoad {
