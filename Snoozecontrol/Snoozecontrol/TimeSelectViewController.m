@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 - (IBAction)dateChanged:(id)sender;
+- (IBAction)hideView:(id)sender;
 
 @end
 
@@ -24,6 +25,10 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(timeChanged:)]) {
         [self.delegate timeChanged:self.datePicker.date];
     }
+}
+
+- (IBAction)hideView:(id)sender {
+    [self.delegate dismissTapped:self];
 }
 
 - (void)setDate:(NSDate *)date {

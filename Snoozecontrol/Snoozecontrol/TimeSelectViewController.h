@@ -14,6 +14,7 @@
 @interface TimeSelectViewController : UIViewController
 
 @property (nonatomic, assign) id<TimeSelectViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerViewVerticalSpaceConstraint;
 
 - (void)setDate:(NSDate *)date;
 
@@ -23,4 +24,5 @@
 @protocol TimeSelectViewControllerDelegate <NSObject>
 @optional
 - (void)timeChanged:(NSDate *)date;
+- (void)dismissTapped:(TimeSelectViewController *)controller;
 @end

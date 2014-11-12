@@ -332,73 +332,111 @@
                         <viewControllerLayoutGuide type="top" id="uCK-vz-sla"/>
                         <viewControllerLayoutGuide type="bottom" id="KQ7-Ns-vWJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="400" id="EcG-nG-4sK">
+                    <view key="view" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="400" id="EcG-nG-4sK" userLabel="Big View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-oU-exc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="432765217.24695998">
-                                    <!--2014-09-18 20:33:37 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="dateChanged:" destination="R7w-ST-dSb" eventType="valueChanged" id="loh-tU-Xw0"/>
-                                </connections>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2n-Uh-YIj">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZ7-SO-VxE">
+                                <rect key="frame" x="-20" y="380" width="360" height="240"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-oU-exc">
+                                        <rect key="frame" x="20" y="58" width="320" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="432765217.24695998">
+                                            <!--2014-09-18 20:33:37 +0000-->
+                                        </date>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="137" width="320" height="162"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="dateChanged:" destination="R7w-ST-dSb" eventType="valueChanged" id="loh-tU-Xw0"/>
+                                        </connections>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2n-Uh-YIj">
+                                        <rect key="frame" x="287" y="20" width="37" height="30"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="253" y="99" width="59" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="hideView:" destination="R7w-ST-dSb" eventType="touchUpInside" id="TBb-rf-dcL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Z2n-Uh-YIj" secondAttribute="trailing" constant="8" id="4hw-fp-FjI"/>
+                                    <constraint firstItem="pPs-oU-exc" firstAttribute="leading" secondItem="oZ7-SO-VxE" secondAttribute="leading" id="IdJ-9d-CBQ"/>
+                                    <constraint firstAttribute="height" constant="250" id="Mro-Wq-0Dm"/>
+                                    <constraint firstAttribute="bottom" secondItem="pPs-oU-exc" secondAttribute="bottom" constant="-8" id="bUa-Vi-S9I"/>
+                                    <constraint firstItem="pPs-oU-exc" firstAttribute="top" secondItem="Z2n-Uh-YIj" secondAttribute="bottom" constant="8" id="dP0-1e-7Av"/>
+                                    <constraint firstAttribute="trailing" secondItem="pPs-oU-exc" secondAttribute="trailing" id="kvj-aK-MC2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Mro-Wq-0Dm"/>
+                                        <exclude reference="IdJ-9d-CBQ"/>
+                                        <exclude reference="bUa-Vi-S9I"/>
+                                        <exclude reference="dP0-1e-7Av"/>
+                                        <exclude reference="kvj-aK-MC2"/>
+                                        <exclude reference="4hw-fp-FjI"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="308" width="320" height="292"/>
+                                    <mask key="constraints">
+                                        <include reference="Mro-Wq-0Dm"/>
+                                        <include reference="IdJ-9d-CBQ"/>
+                                        <include reference="bUa-Vi-S9I"/>
+                                        <include reference="dP0-1e-7Av"/>
+                                        <include reference="kvj-aK-MC2"/>
+                                        <include reference="4hw-fp-FjI"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Z2n-Uh-YIj" firstAttribute="top" secondItem="uCK-vz-sla" secondAttribute="bottom" constant="8" id="OWE-UG-r9a"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Z2n-Uh-YIj" secondAttribute="trailing" constant="8" id="ZTV-Dh-T6L">
-                                <variation key="widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="pPs-oU-exc" secondAttribute="trailing" constant="-16" id="ZiG-cH-VCM"/>
-                            <constraint firstItem="pPs-oU-exc" firstAttribute="top" secondItem="EcG-nG-4sK" secondAttribute="topMargin" id="g4x-zM-ScA">
-                                <variation key="widthClass=compact" constant="44"/>
-                            </constraint>
-                            <constraint firstItem="pPs-oU-exc" firstAttribute="leading" secondItem="EcG-nG-4sK" secondAttribute="leadingMargin" constant="-16" id="khZ-e7-SF1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oZ7-SO-VxE" secondAttribute="trailing" constant="-16" id="5Nh-Xj-Ndz"/>
+                            <constraint firstItem="KQ7-Ns-vWJ" firstAttribute="top" secondItem="oZ7-SO-VxE" secondAttribute="bottom" id="BVd-95-L50"/>
+                            <constraint firstItem="oZ7-SO-VxE" firstAttribute="leading" secondItem="EcG-nG-4sK" secondAttribute="leadingMargin" constant="-16" id="cJ9-iS-xG1"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Z2n-Uh-YIj"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="OWE-UG-r9a"/>
-                                <exclude reference="ZTV-Dh-T6L"/>
-                                <exclude reference="ZiG-cH-VCM"/>
-                                <exclude reference="g4x-zM-ScA"/>
-                                <exclude reference="khZ-e7-SF1"/>
+                                <exclude reference="5Nh-Xj-Ndz"/>
+                                <exclude reference="cJ9-iS-xG1"/>
+                                <exclude reference="BVd-95-L50"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Z2n-Uh-YIj"/>
-                            </mask>
                             <mask key="constraints">
-                                <include reference="OWE-UG-r9a"/>
-                                <include reference="ZTV-Dh-T6L"/>
-                                <include reference="ZiG-cH-VCM"/>
-                                <include reference="g4x-zM-ScA"/>
-                                <include reference="khZ-e7-SF1"/>
+                                <include reference="5Nh-Xj-Ndz"/>
+                                <include reference="cJ9-iS-xG1"/>
+                                <include reference="BVd-95-L50"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4Gr-nJ-4Wz" appends="YES" id="kcN-YM-sO0"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="600"/>
                     <connections>
                         <outlet property="datePicker" destination="pPs-oU-exc" id="CBf-mL-jwd"/>
+                        <outlet property="pickerViewVerticalSpaceConstraint" destination="BVd-95-L50" id="TOC-Hf-iD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVb-D6-PRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Gr-nJ-4Wz">
+                    <connections>
+                        <action selector="hideView:" destination="R7w-ST-dSb" id="6Qj-Fi-G2l"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1068" y="377"/>
+            <point key="canvasLocation" x="1009.5" y="358"/>
         </scene>
         <!--Alarming View Controller-->
         <scene sceneID="CqL-9C-YUa">
@@ -461,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuH-gi-Cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1667" y="377"/>
+            <point key="canvasLocation" x="1890" y="377"/>
         </scene>
     </scenes>
 </document>

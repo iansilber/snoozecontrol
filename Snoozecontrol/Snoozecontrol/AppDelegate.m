@@ -35,11 +35,11 @@
     NSError *activationErr  = nil;
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&setCategoryErr];
     [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *fileName =[NSString stringWithFormat:@"%@.log",[NSDate date]];
-    NSString *logFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *fileName =[NSString stringWithFormat:@"%@.log",[NSDate date]];
+//    NSString *logFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+//    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
     NSLog(@"HI");
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"base"

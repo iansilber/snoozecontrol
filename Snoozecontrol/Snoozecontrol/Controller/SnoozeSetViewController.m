@@ -51,46 +51,50 @@
     [[AlarmManager sharedManager] updateAlarm];
 }
 
-- (void)toggleTimeSelect {
+- (void) showTimeSelector
+{
     if (!self.showingTimeSelect) {
+        
         if (!self.timeSelectController) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             self.timeSelectController = [storyboard instantiateViewControllerWithIdentifier:@"timeSelect"];
             self.timeSelectController.delegate = self;
             
-            //Some hacked together UI Code
-            //Replace with better more versatile stuff
-            int width = self.view.bounds.size.width;
-            int height = self.view.bounds.size.height;
-            self.timeSelectController.view.alpha = 0;
-            
-            NSLog(@"%d", width);
-            NSLog(@"%d", height);
-            
-            CGRect frame = CGRectMake(0, height - (height/2), width, height/2);
-            [self.timeSelectController willMoveToParentViewController:self];
-            [self.timeSelectController.view setFrame:frame];
-            [self.view addSubview:self.timeSelectController.view];
-            [self.timeSelectController didMoveToParentViewController:self];
         }
-        self.showingTimeSelect = YES;
-
-        [self.timeSelectController setDate:[self.alarm dateFromAlarm]];
+        [self addChildViewController:self.timeSelectController];
+        [self.view addSubview:self.timeSelectController.view];
+        [self.timeSelectController didMoveToParentViewController:self];
         
-        [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.timeSelectController.view.alpha = 0;
+        self.timeSelectController.pickerViewVerticalSpaceConstraint.constant = -250;
+        [self.view layoutIfNeeded];
+        
+        [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.timeSelectController.view.alpha = 1;
+            self.timeSelectController.pickerViewVerticalSpaceConstraint.constant = 0;
+            [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            }];
-        
-    } else {
-        if (self.timeSelectController) {
-            self.showingTimeSelect = NO;
-            [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                self.timeSelectController.view.alpha = 0;
-            } completion:^(BOOL finished) {
-            }];
-        }
+            if (finished) {
+                self.showingTimeSelect = YES;
+            }
+        }];
     }
+}
+
+- (void) hideTimeSelector
+{
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.timeSelectController.view.alpha = 0;
+        self.timeSelectController.pickerViewVerticalSpaceConstraint.constant = -250;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self.timeSelectController willMoveToParentViewController:nil];
+            [self.timeSelectController.view removeFromSuperview];
+            [self.timeSelectController removeFromParentViewController];
+            self.showingTimeSelect = NO;
+        }
+    }];
 }
 
 - (void)updateUIForAlarm {
@@ -141,7 +145,7 @@
 }
 
 - (IBAction)timeTapped:(UIButton *)sender {
-    [self toggleTimeSelect];
+    [self showTimeSelector];
 }
 
 - (IBAction)stepperChanged:(UIStepper *)sender {
@@ -184,6 +188,10 @@
 - (void)timeChanged:(NSDate *)date {
     [self updateAlarmFromDate:date];
     [self updateUIForAlarm];
+}
+
+- (void)dismissTapped:(TimeSelectViewController *)controller {
+    [self hideTimeSelector];
 }
 
 #pragma mark UIViewController Lifecycle
