@@ -27,14 +27,14 @@
 
 #pragma mark - Initializers
 
-- (id)init {
-    
-    if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveState) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    }
-    
-    return self;
-}
+//- (id)init {
+//    
+//    if (self = [super init]) {
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveState) name:UIApplicationDidEnterBackgroundNotification object:nil];
+//    }
+//    
+//    return self;
+//}
 
 
 
@@ -63,6 +63,7 @@
 }
 
 - (void)saveState {
+    
     [self saveAlarm:self.alarm];
 }
 
@@ -78,6 +79,14 @@
 - (void)disableAlarm {
     self.alarm.enabled = NO;
     [self updateAlarm];
+}
+
+- (void)disablealarmWithoutModifyingModel {
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    for (NSTimer *timer in self.alarmTimers) {
+        [timer invalidate];
+    }
+    [self.alarmTimers removeAllObjects];
 }
 
 //Hack for now to work w/ notifications

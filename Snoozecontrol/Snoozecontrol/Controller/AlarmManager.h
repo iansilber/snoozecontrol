@@ -23,4 +23,6 @@
 
 - (void)disableAlarm;
 
+- (void)disablealarmWithoutModifyingModel;
+
 @end
