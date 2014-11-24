@@ -15,6 +15,11 @@
 @property (strong, nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 @property (nonatomic, strong) NSTimer *ringTimer;
 @property (nonatomic, assign) int ringCount;
+@property (weak, nonatomic) IBOutlet UIButton *wordButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *wordButtonTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *wordButtonLeftConstraint;
+@property (nonatomic, strong) NSString *phrase;
+@property (nonatomic, assign) int wordIndex;
 
 
 - (IBAction)shutupThisRing:(UIButton *)sender;
@@ -41,7 +46,36 @@
     self.ringTimer = nil;
 }
 
-- (IBAction)totallyShutupThisAlarm:(UIButton *)sender {
+- (IBAction)nextWord:(id)sender {
+    [self randomizeWordLocation];
+}
+
+- (void)randomizeWordLocation {
+    
+    NSArray *words = [self.phrase componentsSeparatedByString:@" "];
+    
+    if (self.wordIndex == words.count) {
+        self.wordIndex = 0;
+        [self totallyShutupThisAlarm];
+    } else {
+        
+        [self.wordButton setTitle:words[self.wordIndex] forState:UIControlStateNormal];
+
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        self.wordButtonLeftConstraint.constant = (rand() % ((int)screenRect.size.width - 120)) + 60;
+        self.wordButtonTopConstraint.constant = (rand() % ((int)screenRect.size.height - 240)) + 120;
+        
+        
+        [UIView animateWithDuration:.2 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        self.wordIndex++;
+        
+    }
+    
+}
+
+- (void)totallyShutupThisAlarm {
     [self.ringTimer invalidate];
     [self.delegate totallyShutUpClicked:self];
 }
@@ -72,9 +106,17 @@
 }
 
 - (void)viewDidLoad {
+    [self.wordButton setTitle:@"" forState:UIControlStateNormal];
+    self.phrase = @"Today is going to be great";
+    self.wordIndex = 0;
     [super viewDidLoad];
     [self configureAudioPlayer];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self randomizeWordLocation];
 }
 
 - (void)didReceiveMemoryWarning {

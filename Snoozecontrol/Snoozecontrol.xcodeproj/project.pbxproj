@@ -222,11 +222,11 @@
 				TargetAttributes = {
 					F999073F19CA841900746639 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = SDL7VU3E9K;
+						DevelopmentTeam = R9K5UR82LV;
 					};
 					F999075519CA841900746639 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = SDL7VU3E9K;
+						DevelopmentTeam = R9K5UR82LV;
 						TestTargetID = F999073F19CA841900746639;
 					};
 				};

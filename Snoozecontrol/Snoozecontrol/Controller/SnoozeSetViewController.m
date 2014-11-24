@@ -210,6 +210,21 @@
     [[AlarmManager sharedManager] updateAlarm];
 }
 
+//- (void)viewDidAppear:(BOOL)animated {
+//    if (!self.alarmingVC) {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        self.alarmingVC  = [storyboard instantiateViewControllerWithIdentifier:@"alarmingVC"];
+//        self.alarmingVC.modalPresentationStyle = UIModalPresentationFullScreen;
+//        self.alarmingVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//        self.alarmingVC.delegate = self;
+//    }
+//    
+//    if (!self.alarmingVC.presentingViewController) {
+//        [self presentViewController:self.alarmingVC animated:YES completion:nil];
+//    }
+//
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

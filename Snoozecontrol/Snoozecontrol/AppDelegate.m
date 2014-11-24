@@ -40,7 +40,6 @@
 //    NSString *fileName =[NSString stringWithFormat:@"%@.log",[NSDate date]];
 //    NSString *logFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];
 //    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
-    NSLog(@"HI");
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"base"
                                                               ofType:@"wav"];
